@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useCartStore from '../stores/cartStore'
 import { MdOutlineDelete } from "react-icons/md";
 import useCheckoutStore from "../stores/checkoutStore"
 import { useNavigate } from "react-router-dom"
+import useOrderStore from '../stores/orderStore';
+import useUserStore from '../stores/userStore';
 
 
 const Checkout = () => {
@@ -17,7 +19,15 @@ const Checkout = () => {
   const hdlSubmit = useCheckoutStore(state => state.hdlSubmit)
   const checkInput = useCheckoutStore(state => state.checkInput)
   const navigate = useNavigate()
+  const setFile = useCheckoutStore(state => state.setFile)
+  // const getOrder = useOrderStore(state => state.getOrder)
+  // const token = useUserStore(state => state.token)
 
+
+  // useEffect( ()=> {
+
+  //   getOrder(token)
+  // },[])
 
 
   return (
@@ -221,7 +231,7 @@ const Checkout = () => {
                     type="file"
                     id="myFile"
                     name="image"
-                    // onChange={(e) => setFile(e.target.files[0])}
+                    onChange={(e) => setFile(e.target.files[0])}
                   ></input>
               </div>
 
@@ -231,7 +241,7 @@ const Checkout = () => {
              <div className='btn btn-success text-2xl text-white' onClick={async() => {
               const res = await hdlSubmit()
               if (res) {
-                navigate('complete')
+                navigate('/complete')
               }
               }}>
               Place Order

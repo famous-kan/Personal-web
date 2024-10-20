@@ -31,7 +31,7 @@ const SidebarAd = () => {
           : ' hover:bg-slate-100 w-full flex items-center gap-3 rounded'
           }>
       <AiFillCloud className='h-14' />
-        Dashboard
+        Update Profile
         </NavLink>
       
         <NavLink 
@@ -55,9 +55,25 @@ const SidebarAd = () => {
       <AiFillCloud className='h-14' />
        Update Product
         </NavLink>
+
+        <NavLink 
+        to={'order'}
+        className={({isActive}) => 
+          isActive
+          ? ' hover:bg-pink-200 w-full bg-pink-400 rounded-md flex items-center gap-3'
+          : ' hover:bg-slate-100 w-full flex items-center gap-3 rounded'
+          }>
+      <AiFillCloud className='h-14' />
+       Orders
+        </NavLink>
+
+
         </nav>
    
           <div>
+
+
+            
           <NavLink 
           onClick={hdlLogout}
         className= {({isActive}) => 

@@ -1,8 +1,13 @@
 import React from 'react'
+import EditProfileAdmin from '../../components/Admin/EditProfileAdmin'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+
+      <EditProfileAdmin />
+
+    </div>
   )
 }
 

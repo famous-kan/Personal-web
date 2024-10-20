@@ -12,11 +12,13 @@ import Dashboard from '../pages/admin/Dashboard'
 import AdminLayout from "../Layouts/AdminLayout";
 import Product from "../pages/admin/Product";
 import Manage from "../pages/admin/Manage";
+import OrderCustomer from "../pages/admin/OrderCustomer";
 import HomeUser from "../pages/user/HomeUser";
 import UserLayout from "../Layouts/UserLayout";
 import ProtectRouter from "./ProtectRouter";
 import Unauthorization from "../pages/Unauthorization";
 import OrderComplete from "../pages/OrderComplete";
+import Status from '../pages/user/Status'
 
 const router = createBrowserRouter([
 
@@ -28,10 +30,9 @@ const router = createBrowserRouter([
     { path: "cart", element: <Cart /> },
     { path: "history", element: <History /> },
     { path: "checkout", element: <Checkout /> },
+    { path: "complete", element: <OrderComplete /> },
     { path: "register", element: <Register /> },
     { path: "login", element: <Login /> },
-    { path: "complete", element: <OrderComplete /> },
-  
     {path: "unauthorization", element: <Unauthorization /> },
   ]
   },
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
     children: [
       {index: true, element: <Dashboard />},
       {path: 'product', element: <Product /> },
+      {path: 'order', element: <OrderCustomer /> },
       {path: 'manage', element: <Manage /> },
       {path: 'home', element: <HomePage /> },
 
@@ -52,12 +54,14 @@ const router = createBrowserRouter([
     element: <UserLayout /> ,
     children: [
     {index: true, element: <HomeUser /> },
-    { path: "shop", element: <Shop /> },
-    { path: "cart", element: <Cart /> },
-    { path: "history", element: <History /> },
-    { path: "checkout", element: <Checkout /> },
-    { path: "register", element: <Register /> },
-    { path: "login", element: <Login /> },
+    // { path: "shop", element: <Shop /> },
+    // { path: "cart", element: <Cart /> },
+    // { path: "history", element: <History /> },
+    // { path: "checkout", element: <Checkout /> },
+    // { path: "register", element: <Register /> },
+    // { path: "login", element: <Login /> },
+     { path: "status", element: <Status /> },
+    // { path: "complete", element: <OrderComplete /> },
 
     ]
   },

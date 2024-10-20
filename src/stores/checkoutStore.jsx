@@ -4,6 +4,7 @@ import useCartStore from "./cartStore";
 import useUserStore from "./userStore";
 import useProductStore from "./productStore";
 import { useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify'
 
 
 const useCheckoutStore = create((set, get) => ({
@@ -38,13 +39,15 @@ const useCheckoutStore = create((set, get) => ({
     },
 
     file: null,
+    setFile : (image) => set({file : image}),
 
-    createOrder: async () => {
+    createOrder: async (token) => {
         let user = useUserStore.getState().user
         let productOncart = useCartStore.getState().productOncart
         let cart = useCartStore.getState().cart
 
         const { tranType,file, cartDetail ,input } = get();
+        const havefile = !!file
 
         const total = productOncart.reduce((prv, cur) => {
             console.log(prv,cur.price,cart[cur.id])
@@ -54,27 +57,26 @@ const useCheckoutStore = create((set, get) => ({
         set(state => ({
             cartDetail : {...state.cartDetail , address : JSON.stringify(input),paymentMedthod:tranType}
         }))
-        console.log(tranType)
-
-        console.log(cartDetail)
+        // console.log(tranType)
+        // console.log(cartDetail)
         const body = new FormData;
         body.append('address', JSON.stringify(input));
         body.append('paymentMethod', tranType);
         body.append('total', +total);
-        body.append('file', file);
+        if(tranType === "ONLINE_BANKING"){
+           if(!havefile){
+            return
+           } 
+        }
+        body.append('image', file);
         body.append('userId', user.id);
-
-        // const body = {
-        //     "address" : cartDetail.address,
-        //     "paymentMedthod" : cartDetail.paymentMedthod,
-        //     "cartTotal": total, 
-        //     "userId" : 2
-        // }
 
         console.log(body)
 
         try {
-            const res = await axios.post("http://localhost:8000/order", body)
+            const res = await axios.post("http://localhost:8000/order", body , {
+                headers : {Authorization : `Bearer ${token}`}
+            })
             const orderId = res.data.id
             let arrObj = []
             for (let item of productOncart){
@@ -91,8 +93,9 @@ const useCheckoutStore = create((set, get) => ({
             const resProductOnCart = await axios.post('http://localhost:8000/order/product',cartBody)
             console.log(resProductOnCart)
             set({ cart: {}, productOncart: [] }); 
+
         } catch (error) {
-            console.error("Error creating order:", error);
+            console.log("Error creating order:", error);
   
         }
     },
@@ -110,8 +113,9 @@ const useCheckoutStore = create((set, get) => ({
         // console.log(tranType)
     },
     hdlSubmit : async(e) => {
-        const createOrder = get().createOrder
-        const input = get().input
+        const {createOrder,input,file} = get()
+        const {token} = useUserStore.getState()
+        const havefile = !!file
         try {
             const {checkInput,tranType} = get()
             const isAllSubmit = Object.entries(input).reduce((prv,cur) => {
@@ -129,7 +133,13 @@ const useCheckoutStore = create((set, get) => ({
             if (!tranType || !isAllSubmit){
                 return
             }
-            const res = await createOrder()
+            if(tranType === "ONLINE_BANKING"){
+                if(!havefile){
+                    toast.error("Attched your slip before place an order")
+                 return
+                } 
+             }
+            const res = await createOrder(token)
             set({ input: 
                 {
                     firstName : '',

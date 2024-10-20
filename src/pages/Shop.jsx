@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useProductStore from '../stores/productStore'
 import useCartStore from "../stores/cartStore";
+import SearchProduct from "../components/SearchProduct";
 
 const Shop = () => {
   const [page, setPage] = useState(1)
@@ -44,7 +45,17 @@ const Shop = () => {
            className="w-full h-80 rounded-xl shadow-2xl "
         />
       </div>
-      <div className="bg-slate-500 flex justify-center my-2">
+
+
+      <div className="bg-slate-500 flex flex-col justify-center mx-auto items-center my-2">
+      
+      <div className="flex my-4 items-center w-1/5 ">
+        <SearchProduct />
+            </div>
+           
+    
+
+
       <div className="flex flex-wrap gap-10 w-[1000px] my-2">
       {products.map((el, index) => {
             return (

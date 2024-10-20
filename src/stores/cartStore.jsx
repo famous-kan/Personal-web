@@ -18,10 +18,10 @@ const useCartStore = create (persist((set,get) => ({
     },
     getProductOnCart: async() => {
         const array = Object.keys(get().cart)
-        console.log(get().cart)
         const body = {productId : array}
         console.log(body)
         const result = await axios.post(`http://localhost:8000/cart/id`, body)
+        console.log(result)
         set({productOncart : result.data})
         
     }, 

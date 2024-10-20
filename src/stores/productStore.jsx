@@ -14,6 +14,12 @@ const useProductStore = create((set,get) => ({
         console.log(result)
         set({ products: result.data , loading: false})
         },
+    searchFilter : async (arg) => {
+        const result = await axios.post('http://localhost:8000/product/search/filters', arg)
+        console.log(result)
+        set({products : result.data})
+        
+    }
     
 }))
 
