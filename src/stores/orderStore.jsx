@@ -21,6 +21,12 @@ const useOrderStore = create((set, get) => ({
         console.log(result)
         set({ allorders: result.data })
     },
+    changeStatus : async(id,status,token) => {
+        const result = await axios.patch('http://localhost:8000/order/all', {id: id, status: status}, {
+            headers : {Authorization : `Bearer ${token}`}
+        })
+        console.log(result)
+    }
 }))
 
 

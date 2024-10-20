@@ -7,6 +7,7 @@ const Status = () => {
   const token = useUserStore((state) => state.token);
   const orders = useOrderStore((state) => state.orders);
   const [openIndex, setOpenIndex] = useState(null);
+  const changeStatus = useOrderStore(state => state.orders)
 
   useEffect(() => {
     getOrder(token);
@@ -71,7 +72,7 @@ const Status = () => {
                 </table>
                 <div className="flex gap-4">
                   <div>Delivery status:</div>
-                  <div>{order.status}</div>
+                  <div className="font-bold">{order.status.split("_").join(' ').toLowerCase()}</div>
                 </div>
               </div>
             )}

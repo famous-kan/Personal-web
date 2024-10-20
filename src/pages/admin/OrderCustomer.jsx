@@ -7,6 +7,8 @@ const OrderCustomer = () => {
     const token = useUserStore((state) => state.token);
     const allorders =useOrderStore(state => state.allorders)
     const [openIndex, setOpenIndex] = useState(null);
+    const changeStatus = useOrderStore(state=> state.changeStatus)
+    const [curStatus, setCurStatus] = useState('')
 
 
     console.log(allorders)
@@ -15,6 +17,18 @@ const OrderCustomer = () => {
       getAllOrder(token);
       }, []);
     
+const hdlChange = (e) => {
+  setCurStatus(e.target.value)
+  console.log(curStatus)
+}
+
+const hdlSubmit = async(e,id) => {
+  e.preventDefault()
+  const res = await changeStatus(id,curStatus,token)
+  console.log(res)
+  getAllOrder(token)
+  setCurStatus('')
+}
 
 
   return (
@@ -75,17 +89,19 @@ const OrderCustomer = () => {
                 <div className='flex gap-3'>
                   {/* <div>{order.status}</div> */}   
                   <div>Delivery status:</div>
-                  <form className="">
-                    <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                      <option selected>Choose a status</option>
-                      <option value="US">Order recieved</option>
-                      <option value="CA">Order prepared</option>
-                      <option value="FR">On the way</option>
-                      <option value="DE">Delivered</option>
+                  <form className="" onSubmit={(e) => hdlSubmit(e,order.id)}>
+                  <select 
+                      onChange={hdlChange} 
+                      value={curStatus || order.status} // Default to order.status if curStatus is empty
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">                      
+                      <option value="" disabled>{order.status.split("_").join(' ').toLowerCase()}</option>
+                      <option name="recieved" value="ORDER_RECIEVED">Order recieved</option>
+                      <option name="prepared" value="ORDER_PREPARED">Order prepared</option>
+                      <option name="way" value="ON_THE_WAY">On the way</option>
+                      <option name="delivered" value="DELIVERED">Delivered</option>
                     </select>
+                    <button className='btn'> Save</button>
                   </form>
-                
-                
                 </div>
               </div>
             )}
