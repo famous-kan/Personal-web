@@ -32,22 +32,32 @@ const Shop = () => {
 
 
   return (
-    <div className="my-2">
+    <div className="">
 
-      <div className="flex w-3/4 justify-center mx-auto gap-2 items-center">
-        <div className="">
-          <p className="text-3xl">All Products</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eaque deserunt mollitia eligendi iste ab, illo dolorem aliquam facilis, alias sed, consequuntur accusantium numquam pariatur voluptatem doloribus qui ut? Sunt!</p>
-        </div>
-        <img
-          src={"https://i.pinimg.com/originals/57/c5/0d/57c50defb2072e77ef03b6535bbd9dad.jpg"}
-          alt="GFG Logo"
-           className="w-full h-80 rounded-xl shadow-2xl "
-        />
+      <div className="flex relative justify-end">
+          <div>
+          <div className=" absolute top-0 left-[-150px] h-[300px] w-[300px] bg-orange-100 rounded-full m-4"></div>
+          <div className=" absolute top-[110px] left-[50px] h-[200px] w-[200px] border-2 border-yellow-200 rounded-full m-4"></div>
+          </div>
+
+          <div className="absolute top-[100px] left-[300px] ">
+          <div className=" z-20">
+            <p className="text-3xl my-2">All Products</p>
+            <p className="w-[500px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eaque deserunt mollitia eligendi iste ab, illo dolorem aliquam facilis, alias sed, consequuntur accusantium numquam pariatur voluptatem doloribus qui ut? Sunt!</p>
+          </div>
+          </div>
+
+          <div className="flex items-end ">
+            <img
+              src={"https://www.loveyouflower.com/images/arrangement-img/arrangement2.webp"}
+              alt="GFG Logo"
+              className="w-[700px] h-[350px]"
+              />
+          </div>
       </div>
 
 
-      <div className="bg-slate-500 flex flex-col justify-center mx-auto items-center my-2">
+      <div className="bg-slate-500 flex flex-col justify-center mx-auto items-center ">
       
       <div className="flex my-4 items-center w-1/5 ">
         <SearchProduct />
@@ -80,10 +90,11 @@ const Shop = () => {
       
       </div>
 
-      <div className="flex gap-3 justify-center mx-auto">
-      <button onClick={() => hdlPageChange(-1)} className="btn btn-md">previous</button>
-      <button onClick={() => hdlPageChange(+1)} className="btn btn-md ">next</button>
+      <div className="join grid grid-cols-2 w-40 justify-center mx-auto my-4">
+      <button onClick={() => hdlPageChange(-1)} className="border join-item btn btn-md">previous</button>
+      <button onClick={() => hdlPageChange(+1)} className="border join-item btn btn-md ">next</button>
     </div>
+
 
 
   </div>

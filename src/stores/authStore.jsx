@@ -37,13 +37,14 @@ const useAuthStore = create((set,get) => ({
         // console.log(result)
     },
     deleteUser : async(id,token) => {
+        const {getAlluser} = get()
         const result = await axios.delete(`http://localhost:8000/user/member/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
         console.log(result)
-        set({member : result.data})
+        await getAlluser(token)
     }
 
 
