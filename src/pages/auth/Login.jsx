@@ -27,6 +27,7 @@ export default function Login() {
 
   const hdlSubmit = async(e) => {
     try {
+      console.log(".................................")
       e.preventDefault()
       let res = await login(input)
       const role = res.user.role
@@ -57,46 +58,59 @@ export default function Login() {
 
   return (
 
-    <>
     <div>
-      <span>Login</span> 
-      <form onSubmit={hdlSubmit} 
-      className='flex flex-col gap-2'>
-        <input 
-        name = "identity"
-        value = {input.identity}
-        onChange={hdlChange} type="text" placeholder='Phone or email' className="input input-bordered input-primary w-full max-w-xs" />
-        <input
-        name = "password"
-        value = {input.password}
-        onChange={hdlChange} type="text" placeholder='password' className="input input-bordered input-primary w-full max-w-xs" />
-        <button className='btn btn-primary w-24 m-2' >Submit</button>
 
 
-        <div className='divider my-0' ></div>
 
-        <button type='button' className='btn btn-secondary text-lg text-white w-fit mx-auto' 
-                 onClick={() => document.getElementById('register-modal').showModal()}
-                 >Create new account</button>
-      
-      </form>
-      
-      </div>
-
-      <dialog id="register-modal" className="modal">
-        <div className="modal-box">
-            <button 
-            type='button'
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            onClick={e=>e.target.closest('dialog').close()}
-            >✕</button>
-            <Register />
-            
+        <div className='relative'>
+      <img className='w-full h-[550px]' src="https://static.wixstatic.com/media/11062b_67fcbfcd9a2547c48a2d51c649bb7e16~mv2.jpg/v1/fill/w_1333,h_739,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_67fcbfcd9a2547c48a2d51c649bb7e16~mv2.jpg" alt="" />
         </div>
-    </dialog>
+
+        <div className='absolute top-[250px] left-[450px] p-10 flex flex-col justify-center items-center gap-4 bg-white opacity-95 shadow-2xl w-[600px] h-[400px]'>
+          <em className='text-4xl'>Login</em> 
+          <form onSubmit={hdlSubmit} 
+          className='flex flex-col gap-2'>
+            <input 
+            name = "identity"
+            value = {input.identity}
+            onChange={hdlChange} type="text" placeholder='Phone or email' 
+            className="input input-bordered w-[300px] bg-red-100 " />
+            <input
+         
+            name = "password"
+            value = {input.password}
+            onChange={hdlChange} type="password" placeholder='password' 
+            className="input input-bordered w-[300px] bg-red-100 " />
+
+            <button className='btn hover:bg-rose-400 hover:text-white text-lg w-[300px]  text-center my-3' >Submit</button>
 
 
-    </>
+            <div className='divider my-0' ></div>
+
+
+
+            <button type='button' className='underline w-fit mx-auto' 
+                    onClick={() => document.getElementById('register-modal').showModal()}
+                    >Create new account</button>
+          
+          </form>
+          </div>
+
+              
+              <dialog id="register-modal" className="modal">
+                <div className="modal-box">
+                    <button 
+                    type='button'
+                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                    onClick={e=>e.target.closest('dialog').close()}
+                    >✕</button>
+                    <Register />
+                    
+                </div>
+              </dialog>
+
+
+    </div>
 
   )
 }

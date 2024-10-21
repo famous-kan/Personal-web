@@ -33,12 +33,12 @@ const Manage = () => {
 
 
   return (
-    <div>
-      <p>Manage</p> 
+    <div className=' flex flex-col'>
+      <em className='text-white text-4xl my-3 flex items-center justify-center '>Manage</em> 
 
       <div><table className="table">
     <thead>
-      <tr>
+      <tr className='text-xl'>
         <th scope="col">No.</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
@@ -58,9 +58,9 @@ const Manage = () => {
 
             {
               el.id === user.id 
-              ? <></>
+              ? <p>CAN'T CHANGE (THIS IS YOUR ACCOUNT)</p>
               
-              :  <select className="select select-primary select-xs" onChange={(e)=>hdlUpdateUser(e,el.id)} defaultValue={el.role}>
+              :  <select className="select select-bordered" onChange={(e)=>hdlUpdateUser(e,el.id)} defaultValue={el.role}>
           <option>ADMIN</option>
           <option>USER</option>
           </select>
@@ -71,7 +71,7 @@ const Manage = () => {
             </td>
 
             <td> 
-            <button className="btn btn-xs text-white btn-primary" onClick={() => hdlRemoveUser(el.id) }> Delete </button>
+            <button className="btn  btn-primary" onClick={() => hdlRemoveUser(el.id) }> Delete </button>
             </td>
           </tr>
 

@@ -75,23 +75,25 @@ const EditProfileAdmin = () => {
 
 
   return (
-    <div className='flex'>
-        <div className='flex flex-1'>
-        <div className='flex justify-center items-center gap-10'>
+    <div className='flex items-center'>
+      <div>
+        <div className='flex flex-1 w-[600px] h-[400px] bg-white mx-5 text-slate-900 rounded-3xl'>
+        <div className='flex justify-center items-center gap-12'>
         <div>
       <img src={profileImage} alt="" className='h-60 w-60 rounded-full' />
         </div>
-        <div className='flex flex-col text-xl gap-4'>
+        <div className='flex flex-col gap-4'>
        <p>Name: {user.firstName} {user.lastName}</p>
        <p>Email/phone : {user.email || user.mobile}</p> 
         </div>
       </div>
         </div>
+        </div>
 
 
-    <div className='flex flex-1'>
-    <span>Update profile</span>
-    <form className= 'm-5 gap-2 flex flex-col w-3/5' onSubmit={hdlSubmit}>
+    <div className='flex flex-1 flex-col justify-center items-center'>
+    <em className='text-white text-3xl'>Update profile</em>
+    <form className= 'm-4 gap-2 flex flex-col w-3/5' onSubmit={hdlSubmit}>
        <input type="text" placeholder='Email or Phone' className='input input-bordered '
           name='newIdentity'
           value={input.newIdentity}
@@ -128,7 +130,7 @@ const EditProfileAdmin = () => {
                 : <></>
 
         }
-        <button className=' mx-3 btn btn-secondary'>Update</button>
+        <button className=' mx-3 my-3 btn text-xl'>Update</button>
 
 
     </form>

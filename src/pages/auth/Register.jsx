@@ -65,42 +65,41 @@ export default function Register() {
 
   return (
     <div>
-
- 
-    <span>Register</span>
-    <form className= 'm-5 gap-2 flex flex-col w-3/5' onSubmit={hdlSubmit}>
-       <input type="text" placeholder='Email or Phone' className='input input-bordered '
-          name='identity'
-          value={input.identity}
-          onChange={hdlChange} />
-       <input type="text" placeholder='First name' className='input input-bordered '
-             name='firstName'
-             value={input.firstName}
-             onChange={hdlChange} />
-       <input type="text" placeholder='Last name' className='input input-bordered '
-             name='lastName'
-             value={input.lastName}
-             onChange={hdlChange} />
-       <input type="password" placeholder='password' className='input input-bordered '
-             name='password'
-             value={input.password}
-             onChange={hdlChange} />
-       <input type="password" placeholder='confirm password' className='input input-bordered '
-             name='confirmPassword'
-             value={input.confirmPassword}
-             onChange={hdlChange} />
-        { 
-                errMsg.isError ? 
-                <p>{errMsg.message}</p>
-                
-                : <></>
-
-        }
-        <button className=' mx-3 btn btn-secondary'>Sign up</button>
+        <div className='flex flex-col justify-center items-center bg-red-100 m-2 rounded-md'>
+            <em className='text-3xl my-2'>Register</em>
 
 
-    </form>
+            <form className= 'my-2 gap-3 flex flex-col w-3/5' onSubmit={hdlSubmit}>
+            <input type="text" placeholder='Email or Phone' className='input input-bordered '
+                name='identity'
+                value={input.identity}
+                onChange={hdlChange} />
+            <input type="text" placeholder='First name' className='input input-bordered '
+                    name='firstName'
+                    value={input.firstName}
+                    onChange={hdlChange} />
+            <input type="text" placeholder='Last name' className='input input-bordered '
+                    name='lastName'
+                    value={input.lastName}
+                    onChange={hdlChange} />
+            <input type="password" placeholder='password' className='input input-bordered '
+                    name='password'
+                    value={input.password}
+                    onChange={hdlChange} />
+            <input type="password" placeholder='confirm password' className='input input-bordered '
+                    name='confirmPassword'
+                    value={input.confirmPassword}
+                    onChange={hdlChange} />
+                { 
+                        errMsg.isError ? 
+                        <p>{errMsg.message}</p>
+                        
+                        : <></>
 
+                }
+                <button className='btn hover:bg-rose-400 hover:text-white text-lg text-center my-3' >Sign Up</button>
+            </form>
+        </div>
     </div>
   )
 }

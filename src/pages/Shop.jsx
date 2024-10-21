@@ -34,7 +34,7 @@ const Shop = () => {
   return (
     <div className="">
 
-      <div className="flex relative justify-end">
+      <div className="flex relative justify-end border">
           <div>
           <div className=" absolute top-0 left-[-150px] h-[300px] w-[300px] bg-orange-100 rounded-full m-4"></div>
           <div className=" absolute top-[110px] left-[50px] h-[200px] w-[200px] border-2 border-yellow-200 rounded-full m-4"></div>
@@ -57,30 +57,46 @@ const Shop = () => {
       </div>
 
 
-      <div className="bg-slate-500 flex flex-col justify-center mx-auto items-center ">
+      <div className="flex flex-col justify-center mx-auto items-center ">
       
-      <div className="flex my-4 items-center w-1/5 ">
+      <div className="flex my-12 items-center w-1/5 ">
         <SearchProduct />
             </div>
            
     
 
 
-      <div className="flex flex-wrap gap-10 w-[1000px] my-2">
+      <div className="flex flex-wrap gap-10 w-[1000px] my-2 ">
       {products.map((el, index) => {
             return (
               
-              <div className="flex flex-col h-80 w-[300px] gap-2 bg-red-200 justify-center items-center">
-                  <img
-                    src={el.image || "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"}
-                    alt="GFG Logo"
-                    width="100"
-                    height="100"
-                  />
+              <div className="flex flex-col h-[420px] w-[300px] gap-1 bg-slate-700 text-white text-lg  justify-end items-center">
+                 
+                  <label className="swap swap-rotate  hover:opacity-80 ">
+                  <input type="checkbox" className="hidden" />
+                      
+                      <img
+                        src={el.image || "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"}
+                        alt="GFG Logo"
+                        className=" swap-off w-[240px] justify-center mx-auto "
+                        />
+                        <div className=" relative swap-on bg-slate-700 text-white  ">
+                          <div className="flex justify-center mx-auto">
+                          <img
+                          src={el.image || "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"}
+                          alt="GFG Logo"
+                          className=" absolute w-[240px] opacity-30 "
+                          />
+                          <em className=" absolute  bg-slate-900 text-white p-2 text-center rounded-xl bottom-16 h-[230px] w-[200px] ">"{el.description}"</em>
+                          </div>
+                          </div>
+                    </label>
+
+                    {/* absolute z-20 left-6 bottom-0 flex justify-center mx-auto */}
+
                     <p>{el.title}</p>
-                    <p>{el.description}</p>
                     <p>Price {el.price} Baht</p>
-                    <div onClick={() => addtoCart(el.id)} className="btn w-1/2">Add to cart</div>
+                    <div onClick={() => addtoCart(el.id)} className="btn w-wide m-2">Add to cart</div>
               </div>
             );
           })}
@@ -90,9 +106,9 @@ const Shop = () => {
       
       </div>
 
-      <div className="join grid grid-cols-2 w-40 justify-center mx-auto my-4">
-      <button onClick={() => hdlPageChange(-1)} className="border join-item btn btn-md">previous</button>
-      <button onClick={() => hdlPageChange(+1)} className="border join-item btn btn-md ">next</button>
+      <div className="join grid grid-cols-2 w-60 justify-center mx-auto my-8 ">
+      <button onClick={() => hdlPageChange(-1)} className="border text-xl join-item btn btn-md">previous</button>
+      <button onClick={() => hdlPageChange(+1)} className="border text-xl join-item btn btn-md ">next</button>
     </div>
 
 

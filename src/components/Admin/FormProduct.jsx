@@ -87,8 +87,9 @@ const FormProduct = () => {
     <>
    
     <div className="container mx-auto p-4 bg-white shadow-md">
-      <form onSubmit={hdlSubmit} className="flex flex-col w-3/4 mx-auto ">
-        <h1 className="text-2xl">Add product</h1>
+      <form onSubmit={hdlSubmit} className="flex flex-col mx-auto gap-1 ">
+        <div className="flex flex-col w-2/3 justify-center mx-auto">
+        <em className="text-3xl text-center my-3">Add product</em>
         Title :{" "}
         <input
           type="text"
@@ -118,44 +119,52 @@ const FormProduct = () => {
         <br />
         Image :
         <input
+        className="file-input file-input-bordered w-full max-w-xs"
           type="file"
           id="myFile"
           name="image"
           onChange={(e) => setFile(e.target.files[0])}
         ></input>
         <br />
-        <button className="btn btn-primary">Update</button>
+        <button className="btn btn-primary text-xl my-2">Update</button>
+        </div>
         <hr />
         <br />
-        <table className="border">
+
+        <div className=" w-full">
+        <table className="w-full">
           <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Image</th>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
-              <th scope="col">Price</th>
+            <tr className=" bg-teal-950 text-white">
+              <th className="w-[30px] h-10 text-center" scope="col">#</th>
+              <th className="w-[300px] text-center" scope="col">Image</th>
+              <th className="w-[200px] text-center" scope="col">Title</th>
+              <th className="w-[400px] text-center" scope="col">Description</th>
+              <th className="w-[80px] text-center" scope="col">Price</th>
+              <th className="w-[100px] text-center" scope="col">Action</th>
+              <th className="w-[100px] text-center" scope="col">Action</th>
+              
             </tr>
           </thead>
           <tbody>
             {products.map((el, index) => {
               return (
                 <tr key={el.id}>
-                  <th scope="row">{index+1}</th>
+                  <th className="text-center text-xl" scope="row">{index+1}.</th>
                   <td>
                     <img
                       src={el.image || "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"}
                       alt="GFG Logo"
-                      width="100"
-                      height="100"
+                      className="w-[200px] mx-auto"
                     />
+                
                   </td>
-                  <td>{el.title}</td>
-                  <td>{el.description}</td>
-                  <td>{el.price}</td>
+                  <td className="text-center text-xl">{el.title}</td>
+                  <td className="">{el.description}</td>
+                  <td className="text-center font-bold border-r">{el.price}</td>
 
                   <td> 
-            <button type='button' className='btn btn-secondary'
+                    
+            <button type='button' className='btn btn-outline'
              onClick={() => {
              setEditProduct(el.id)
              document.getElementById('edit-modal').showModal()
@@ -163,7 +172,7 @@ const FormProduct = () => {
                  >Edit</button>
             </td>
                   <td> 
-            <button className="btn btn-xs text-white btn-primary" onClick={() => hdlRemoveProduct(el.id) }> Delete </button>
+            <button className="btn  text-white btn-secondary" onClick={() => hdlRemoveProduct(el.id) }> Delete </button>
             </td>
                 </tr>
                 
@@ -171,6 +180,8 @@ const FormProduct = () => {
             })}
           </tbody>
         </table>
+        </div>
+
       </form>
       <div className="flex gap-3">
         <button onClick={() => hdlPageChange(-1)} className="btn">previous</button>

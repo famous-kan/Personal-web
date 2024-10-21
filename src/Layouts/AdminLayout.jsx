@@ -9,7 +9,7 @@ const AdminLayout = () => {
         <SidebarAd />
         <div className='flex flex-col flex-1'>
           <HeaderAd />
-          <main className='flex-1 p-6 bg-slate-300 overflow-y-auto'>
+          <main className='flex-1 p-6 bg-slate-900 overflow-y-auto'>
           <Outlet />
           </main>
         </div>
