@@ -12,8 +12,15 @@ export default function Login() {
     password: ''
   })
 
+  const [checkInput, setCheckinput] = useState({
+    identity : true,
+    password: true
+  })
+
   const hdlChange = async e =>{
     setInput(prev => ({...prev,[e.target.name]: e.target.value}))
+    console.log(checkInput)
+    console.log(input)
 }
 
 
@@ -27,11 +34,19 @@ export default function Login() {
 
   const hdlSubmit = async(e) => {
     try {
-      console.log(".................................")
       e.preventDefault()
       let res = await login(input)
       const role = res.user.role
-      console.log( role)
+
+      const identityValid = !!input.identity.trim();
+      const passwordValid = !!input.password.trim();
+      setCheckInput({
+        identity: identityValid,
+        password: passwordValid
+      });
+      console.log(checkInput,'---------------')
+      console.log('+++++++++++++++++++++++++++++++++++++++++++++')
+
       if(!(input.identity.trim() && input.password.trim())){
         return alert("Please fill in all input")
       }
@@ -75,12 +90,17 @@ export default function Login() {
             value = {input.identity}
             onChange={hdlChange} type="text" placeholder='Phone or email' 
             className="input input-bordered w-[300px] bg-red-100 " />
+             {!checkInput.identity ? <></>  : <p className='text-xs text-red-500'>Fill your Phone or Email!</p>}
+
+
             <input
          
             name = "password"
             value = {input.password}
             onChange={hdlChange} type="password" placeholder='password' 
             className="input input-bordered w-[300px] bg-red-100 " />
+            {!checkInput.password ? <></>  : <p className='text-xs text-red-500'>Fill your Password!</p>}
+
 
             <button className='btn hover:bg-rose-400 hover:text-white text-lg w-[300px]  text-center my-3' >Submit</button>
 

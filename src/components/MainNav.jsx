@@ -73,7 +73,7 @@ const MainNav = () => {
                   
                       ?  
                       <details className="dropdown dropdown-end">
-                        <summary className=" rounded-full before:content-none"><img src={profileImage} alt="" className=' h-20 w-20 rounded-full shadow-xl' /></summary>
+                        <summary className=" rounded-full before:content-none"><img src={profileImage} alt="" className=' h-16 w-16 rounded-full shadow-xl' /></summary>
                         {/* <summary className="btn m-1 h-14 w-14 rounded-full "><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M288 320a224 224 0 1 0 448 0 224 224 0 1 0-448 0zm544 608H160a32 32 0 0 1-32-32v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 0 1-32 32z"></path></g></svg></summary> */}
                           <ul className="  menu  dropdown-content bg-base-100 rounded-box z-20 w-52 p-2 shadow">
                           {

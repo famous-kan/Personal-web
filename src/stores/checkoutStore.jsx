@@ -9,6 +9,8 @@ import { toast } from 'react-toastify'
 
 const useCheckoutStore = create((set, get) => ({
     
+
+
     tranType : "",
 
     checkInput : {
@@ -22,6 +24,7 @@ const useCheckoutStore = create((set, get) => ({
         email : true,
         paymentMedthod : true
     },
+    
     input : {
         firstName : '',
         lastName : '',
@@ -107,6 +110,7 @@ const useCheckoutStore = create((set, get) => ({
        
     },
     hdlRadioChange : (e) => {
+      
         console.log(e.target.value)
         const tranType = get().tranType
         set({tranType : e.target.value})

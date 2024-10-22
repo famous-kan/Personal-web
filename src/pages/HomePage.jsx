@@ -14,21 +14,6 @@ const HomePage = () => {
     getAllProducts(10,page);
   }, []);
 
-  const hdlPageChange = (n) => {
-    console.log("hhhhhhhhhhhhhhhhhhhhh")
-    try {
-      if(page+n < 1){
-        return 
-      }
-      if (n>0 && products.length < 10){
-        return
-      }
-      setPage(prev => prev+n)
-      getAllProducts(10,page+n)
-    } catch (err) {
-      return
-    }
-  }
 
   return (
     <div>
@@ -69,8 +54,12 @@ const HomePage = () => {
     </div>
     <div className="divider"></div>
     <br />
-    <div className=" flex flex-col gap-5 bg-slate-900 rounded-full w-3/4 justify-center mx-auto ">
-      <p className="text-3xl mx-auto my-4 text-white">Treading Flowers</p>
+
+
+    <div className=" flex flex-col gap-5 bg-slate-900 w-3/4 justify-center mx-auto shadow-2xl">
+    {/* <video src="/src/assets/purple.mp4" autoPlay loop className=" relative h-[600px] w-full" >
+      <div className="absolute "> */}
+      <p className=" text-3xl mx-auto my-4 text-white z-10">Treading Flowers</p>
       <div className="flex overflow-x-auto overflow-y-hidden space-x-8  w-3/4 bg-slate-900 p-2 rounded-2xl mx-auto">
        
         <div className="relative flex-shrink-0 rounded-full ">
@@ -103,6 +92,8 @@ const HomePage = () => {
         
       </div>
       <br />
+      {/* </div>
+    </video> */}
     </div>
     <Link to = {'shop'} className="my-4 flex btn btn-wide mx-auto bg-slate-700 text-white h-16 rounded-2xl text-lg " >See All Products</Link>
 

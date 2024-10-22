@@ -14,7 +14,7 @@ const HeaderAd = () => {
 
       <div className='flex flex-col justify-center items-center'>
       <PiFlowerTulipBold className='w-10 h-10 ' />
-      <Link to = {'product'} className='flex justify-center items-center hover:bg-slate-300 hover:text-black w-[80px] h-[20px]' >PRODUCTS</Link>
+      <Link to = {'/shop'} className='flex justify-center items-center hover:bg-slate-300 hover:text-black w-[80px] h-[20px]' >PRODUCTS</Link>
       </div>
 
    </header>

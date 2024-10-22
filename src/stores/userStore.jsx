@@ -12,6 +12,7 @@ const useUserStore = create(persist((set,get) => ({
     profileImage : null,
     // test: null,
 
+
     setprofileImage: (image) => set({ profileImage: image }),
     login: async(input) => {
         const rs = await axios.post('http://localhost:8000/auth/login', input)

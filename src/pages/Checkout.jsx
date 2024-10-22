@@ -20,6 +20,7 @@ const Checkout = () => {
   const checkInput = useCheckoutStore(state => state.checkInput)
   const navigate = useNavigate()
   const setFile = useCheckoutStore(state => state.setFile)
+  const [visible, setvisible] = useState(false)
   const tranType = useCheckoutStore(state => state.tranType)
   // const [showImage,setShowImage] = useState
   // const getOrder = useOrderStore(state => state.getOrder)
@@ -74,6 +75,7 @@ const Checkout = () => {
               <input className='border w-full h-8' 
               type="text" 
               onChange={hdlChange}
+             
               name='street' value={input.street} 
               placeholder='House number, Street name ' />
               {checkInput.street ? <></>  : <p className='text-xs text-red-500'>Fill your street No.!</p>}
@@ -177,74 +179,81 @@ const Checkout = () => {
             </div>
 
 
+              <div className='divider'></div>
 
-             <div className='m-8'>
-              <p className ="mb-4 font-semibold text-gray-900 ">Payment Medthod</p>
+             <div className='m-2'>
+              <p className ="mb-4 font-semibold text-gray-900  text-xl">Payment Medthod :</p>
+              <div className='flex p-2'>
+              <ul className=' flex flex-col gap-3'>
 
-              <div className='flex'>
-              <ul className =" w-48 text-sm font-medium    ">
-                 <li className=" w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div className="!collapse bg-base-200">
-                      
-                        <input 
-                        id="list-qr-code" 
-                        type="radio" 
-                        value="ONLINE_BANKING" 
-                        checked={tranType==="ONLINE_BANKING" }
-                        onChange={hdlRadioChange}
-                        name="paymentMedthod" 
-                        className="w-4 h-4"  />
-                        <div className="collapse-title text-xl font-medium checked:bg-green-400"> Online Banking </div>
-                        <div className="collapse-content">
-                          <img src="/src/assets/flower2.jpg" alt="" />
-                         </div>
-
-                        {/* <label for="list--qr-code" className="w-full py-3 ms-2 text-sm font-medium">Online Payment</label> */}
-                    </div>
-                  </li>
-                 <li className=" w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div className="!collapse bg-base-200">
+                   <li className=" w-[90px] ">
+                    <div className="bg-sky-100 flex rounded-xl items-center">
+                    <div className='flex gap-1 items-center mx-1'>
                         <input 
                         type="radio" 
                         value="CASH" 
                         onChange={hdlRadioChange}
+                        onClick={() => setvisible(false)}
                         checked={tranType==="CASH"}
                         name="paymentMedthod" 
-                        className="w-4 h-4"  />
-                        <div className="collapse-title text-xl font-medium checked:bg-green-400"> Cash </div>
-                        {/* <label for="list--qr-code" className="w-full py-3 ms-2 text-sm font-medium">Online Payment</label> */}
+                        className="w-5 h-5 flex radio-primary"  />
+                        <div className="text-xl font-medium "> Cash </div>
+                    </div>
                     </div>
                   </li>
-
-                <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div className="flex items-center ps-3">
+                   <li className=" w-[180px] ">
+                      <div className="bg-sky-100 flex flex-col gap-4 rounded-xl items-start p-1">
+                        <div className='flex gap-1 items-center'>
                         <input 
-                        id="list-bank" 
-                        type="radio" value="CASH" 
-                        name="paymentMedthod" 
+                        id="list-qr-code" 
+                        type="radio" 
+                        value="ONLINE_BANKING" 
+                        // checked={tranType==="ONLINE_BANKING" }
                         onChange={hdlRadioChange}
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                        <label for="list-bank" className="w-full py-3 ms-2 text-sm font-medium ">Cash delivery</label>
-                    </div>
-                </li>
+                        onClick={() => setvisible(true)}
+                        name="paymentMedthod" 
+                        className="w-5 h-5 flex  radio-primary" />
+                        <div className=" text-xl "> Online Banking </div>
+                        </div>
+                        { visible && 
+
+                            <div className=' flex bg-sky-100'>
+
+                                  <div className='flex flex-col gap-4 bg-sky-100 mx-4'>
+                                  <div className='flex flex-col font-semibold min-w-[200px]'>
+                                  <img src="https://i.pinimg.com/474x/00/24/29/002429e4b28532ce5273cafa10be61c2.jpg" className='w-[25px]' alt="" />
+                                  <p>KBANK Kasikorn Bank Company </p>
+                                  <p>Account No. 123-2-34567-1</p>
+                                  </div>
+                                  <div className='flex flex-col font-semibold'>
+                                  <img src="https://i0.wp.com/www.kanjanabaramee.org/wp-content/uploads/2017/07/logo_ktb1.png?fit=225%2C225&ssl=1"  className='w-[25px]' alt="" />
+                                  <p>KTB Krungthai company </p>
+                                  <p>Account No. 123-2-34567-1</p>
+                                  </div>
+                                  <div className='flex flex-col font-semibold'>
+                                  <img src="https://companieslogo.com/img/orig/SCB.BK-478d8e61.png?t=1720244493" className='w-[25px]' alt="" />
+                                  <p>SCB Siam Commercial Bank </p>
+                                  <p>Account No. 123-2-34567-1</p>
+                                  </div>
+                                  </div>
+                         
+                              <div className="divider divider-horizontal">OR</div>
+   
+                                  <div className='flex w-[300px] flex-col'>
+                                  <img src="/src/assets/qr.jpg" className=' h-[300px] m-2' alt="" />
+                                  
+                                  </div>
+            
+                            </div>
+
+                            }
+                      
+                        </div>
+                  </li>
+
+             
               </ul>
               </div>
-
-
-              {/* <div className='flex flex-col gap-3'>
-              <details className="!collapse bg-base-200">
-                <summary className="collapse-title ">Qr Code</summary>
-                <div className="collapse-content">
-                  <p>PICTURE</p>
-                </div>
-              </details>
-              <details className="!collapse bg-base-200">
-                <summary className="collapse-title">Bank Tranfer</summary>
-                <div className="collapse-content">
-                  <p>BANK KRUNGTHAI</p>
-                </div>
-              </details>
-              </div> */}
                 
                 <div>
                   <p></p>
@@ -252,6 +261,7 @@ const Checkout = () => {
                     type="file"
                     id="myFile"
                     name="image"
+                    className=' mx-2 my-3 file-input file-input-bordered file-input-primary w-full max-w-xs'
                     onChange={(e) => setFile(e.target.files[0])}
                   ></input>
               </div>
