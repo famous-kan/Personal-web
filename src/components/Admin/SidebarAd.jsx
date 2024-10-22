@@ -8,9 +8,10 @@ import { HiMiniCog8Tooth } from "react-icons/hi2";
 const SidebarAd = () => {
   const logout = useUserStore(state => state.logout)
   const navigate = useNavigate()
+  const setCart = useUserStore(state => state.setCart)
   const hdlLogout = () => {
-    logout()
     navigate('/')
+    logout()
   }
   
   return (

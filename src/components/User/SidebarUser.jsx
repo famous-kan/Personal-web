@@ -20,20 +20,20 @@ const SidebarUser = () => {
       }
 
     return (
-        <div className='w-60 bg-orange-200 flex flex-col h-screen'>
+        <div className='w-60 bg-orange-100 flex flex-col h-screen'>
 
-          <div className=' flex justify-around '>
+          <div className=' flex justify-center m-3 '>
           
-            <Link to = {'/'}>
+            {/* <Link to = {'/'}>
               <div className='flex justify-center items-center '>
               {/* <FaLessThan className='h-6 w-6' /> */}
-              <IoMdHome  className='h-10 w-10' />
-              </div>
-            </Link>
+              {/* <IoMdHome  className='h-10 w-10' /> */}
+              {/* </div> */}
+            {/* </Link> */}
 
               <img  
               src={profileImage} alt="" 
-              className=' rounded-full w-16 h-16'
+              className=' rounded-full w-[90px] h-[90px]'
               />
           </div>
     

@@ -108,9 +108,9 @@ const useCheckoutStore = create((set, get) => ({
     },
     hdlRadioChange : (e) => {
         console.log(e.target.value)
-        // const tranType = get().tranType
+        const tranType = get().tranType
         set({tranType : e.target.value})
-        // console.log(tranType)
+        console.log(tranType)
     },
     hdlSubmit : async(e) => {
         const {createOrder,input,file} = get()

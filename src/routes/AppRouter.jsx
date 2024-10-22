@@ -54,13 +54,13 @@ const router = createBrowserRouter([
     element: <UserLayout /> ,
     children: [
     {index: true, element: <HomeUser /> },
+    { path: "history", element: <Status /> },
     // { path: "shop", element: <Shop /> },
     // { path: "cart", element: <Cart /> },
     // { path: "history", element: <History /> },
     // { path: "checkout", element: <Checkout /> },
     // { path: "register", element: <Register /> },
     // { path: "login", element: <Login /> },
-     { path: "status", element: <Status /> },
     // { path: "complete", element: <OrderComplete /> },
 
     ]

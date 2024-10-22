@@ -18,11 +18,13 @@ const EditProfileAdmin = () => {
         newPassword : '',
         newConfirmPassword: ''
     })
-    
+    console.log(profileImage)
     console.log(user)
     useEffect(() => {
-        setprofileImage(user.profileImage)
-    },[user])
+        setprofileImage(profileImage)
+        // console.log(profileImage)
+        // settestImage(profileImage)
+    },[user, profileImage])
 
     const [errMsg, setErrMsg] = useState({
         isError : false,
@@ -63,7 +65,7 @@ const EditProfileAdmin = () => {
                 newConfirmPassword: '' 
             })
             setUser(result.data.editUser)
-            e.target.closest('dialog').close()
+            setprofileImage(result.data.editUser.profileImage)
             setErrMsg({message: '', isError: false})
             toast.success('Update successfully')
         } catch (err) {
@@ -80,7 +82,8 @@ const EditProfileAdmin = () => {
         <div className='flex flex-1 w-[600px] h-[400px] bg-white mx-5 text-slate-900 rounded-3xl'>
         <div className='flex justify-center items-center gap-12'>
         <div>
-      <img src={profileImage} alt="" className='h-60 w-60 rounded-full' />
+          
+      <img src={profileImage} alt="" className='h-60 w-60 rounded-full mx-10' />
         </div>
         <div className='flex flex-col gap-4'>
        <p>Name: {user.firstName} {user.lastName}</p>
@@ -115,7 +118,7 @@ const EditProfileAdmin = () => {
              value={input.newConfirmPassword}
              onChange={hdlChange} />
         
-        Image :
+        <p className='text-white'>Image :</p>
         <input
            type="file" className="file-input file-input-bordered w-full max-w-xs"
           id="myFile"

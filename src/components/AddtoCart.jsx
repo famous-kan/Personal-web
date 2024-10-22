@@ -43,10 +43,10 @@ const AddtoCart = () => {
                         <span className="w-20  text-sm">{item.price}</span>
                         <div className="flex items-center ">
                         <button className="border w-8 btn " onClick={()=> updateProductOnCart(-1,item.id)} >-</button>
-                        <span className=" w-8 text-center text-sm ">{cart[item.id]}</span>
+                        <span className=" w-8 text-center">{cart[item.id]}</span>
                         <button className="border w-8 btn "  onClick={()=> updateProductOnCart(+1,item.id)}>+</button>
                         </div>
-                        <button className="w-8 h-8" onClick={() => deleteProductOnCart(item.id)  }> <MdOutlineDelete/></button>
+                        <button className="w-8 h-8" onClick={() => deleteProductOnCart(item.id)  }> <MdOutlineDelete className="h-7 w-7"/></button>
                         
                     </div>
                    

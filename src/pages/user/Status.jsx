@@ -17,11 +17,15 @@ const Status = () => {
   return (
     <div>
 
-      <div>History</div>
-
-      <div className="flex flex-col gap-5">
-        {orders.map((order, index) => (
-          <div key={order.id} className="collapse bg-base-200">
+      <em className="flex justify-center m-3 text-3xl ">History</em>
+  
+      
+    
+      <div className="flex flex-col gap-5 w-2/3 mx-auto">
+        {orders.map((order, index) => {
+          console.log(orders)
+          return(
+          <div key={order.id} className="!collapse bg-base-200">
             <input
               type="checkbox"
               checked={openIndex === index}
@@ -77,7 +81,7 @@ const Status = () => {
               </div>
             )}
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );

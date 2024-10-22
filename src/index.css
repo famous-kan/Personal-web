@@ -115,3 +115,11 @@
   *{
     font-family: 'Inria Serif';
   }
+
+  summary {
+    list-style: none; /* Removes the default marker (triangle) */
+  }
+  
+  summary::-webkit-details-marker {
+    display: none; /* Removes the default marker for WebKit browsers */
+  }

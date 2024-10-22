@@ -20,6 +20,8 @@ const Checkout = () => {
   const checkInput = useCheckoutStore(state => state.checkInput)
   const navigate = useNavigate()
   const setFile = useCheckoutStore(state => state.setFile)
+  const tranType = useCheckoutStore(state => state.tranType)
+  // const [showImage,setShowImage] = useState
   // const getOrder = useOrderStore(state => state.getOrder)
   // const token = useUserStore(state => state.token)
 
@@ -28,7 +30,6 @@ const Checkout = () => {
 
   //   getOrder(token)
   // },[])
-
 
   return (
     <div>
@@ -183,15 +184,35 @@ const Checkout = () => {
               <div className='flex'>
               <ul className =" w-48 text-sm font-medium    ">
                  <li className=" w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div className="flex items-center ps-3">
+                    <div className="!collapse bg-base-200">
+                      
                         <input 
                         id="list-qr-code" 
                         type="radio" 
                         value="ONLINE_BANKING" 
+                        checked={tranType==="ONLINE_BANKING" }
                         onChange={hdlRadioChange}
                         name="paymentMedthod" 
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                        <label for="list--qr-code" className="w-full py-3 ms-2 text-sm font-medium">Online Payment</label>
+                        className="w-4 h-4"  />
+                        <div className="collapse-title text-xl font-medium checked:bg-green-400"> Online Banking </div>
+                        <div className="collapse-content">
+                          <img src="/src/assets/flower2.jpg" alt="" />
+                         </div>
+
+                        {/* <label for="list--qr-code" className="w-full py-3 ms-2 text-sm font-medium">Online Payment</label> */}
+                    </div>
+                  </li>
+                 <li className=" w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div className="!collapse bg-base-200">
+                        <input 
+                        type="radio" 
+                        value="CASH" 
+                        onChange={hdlRadioChange}
+                        checked={tranType==="CASH"}
+                        name="paymentMedthod" 
+                        className="w-4 h-4"  />
+                        <div className="collapse-title text-xl font-medium checked:bg-green-400"> Cash </div>
+                        {/* <label for="list--qr-code" className="w-full py-3 ms-2 text-sm font-medium">Online Payment</label> */}
                     </div>
                   </li>
 
@@ -210,20 +231,20 @@ const Checkout = () => {
               </div>
 
 
-              <div className='flex flex-col gap-3'>
-              <details className="collapse bg-base-200">
+              {/* <div className='flex flex-col gap-3'>
+              <details className="!collapse bg-base-200">
                 <summary className="collapse-title ">Qr Code</summary>
                 <div className="collapse-content">
                   <p>PICTURE</p>
                 </div>
               </details>
-              <details className="collapse bg-base-200">
+              <details className="!collapse bg-base-200">
                 <summary className="collapse-title">Bank Tranfer</summary>
                 <div className="collapse-content">
                   <p>BANK KRUNGTHAI</p>
                 </div>
               </details>
-              </div>
+              </div> */}
                 
                 <div>
                   <p></p>

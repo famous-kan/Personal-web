@@ -9,6 +9,7 @@ const EditProfileUser = () => {
     const setUser = useUserStore(state => state.setUser)
     const setprofileImage = useUserStore(state => state.setprofileImage)
     const user = useUserStore(state => state.user)
+    const profileImage = useUserStore(state => state.profileImage)
     const [file, setFile] = useState(null)
     const [input,SetInput] = useState({
         newIdentity : '',
@@ -19,8 +20,8 @@ const EditProfileUser = () => {
     })
     
     useEffect(() => {
-        setprofileImage(user.profileImage)
-    },[user])
+        setprofileImage(profileImage)
+    },[user,profileImage])
 
     const [errMsg, setErrMsg] = useState({
         isError : false,
@@ -60,7 +61,9 @@ const EditProfileUser = () => {
                 newPassword : '',
                 newConfirmPassword: '' 
             })
+            // console.log(result)
             setUser(result.data.editUser)
+            setprofileImage(result.data.editUser.profileImage)
             e.target.closest('dialog').close()
             setErrMsg({message: '', isError: false})
             toast.success('Update successfully')

@@ -4,7 +4,6 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { GrCamera } from "react-icons/gr";
 import { FaRegFaceGrinStars } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Carousel } from "bootstrap";
 import CarouselFadeExample from "../components/Carousel";
 const HomePage = () => {
   const [page, setPage] = useState(1)

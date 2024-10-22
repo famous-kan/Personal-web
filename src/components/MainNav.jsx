@@ -15,6 +15,7 @@ const MainNav = () => {
   const token = useUserStore(state => state.token)
   const logout = useUserStore(state => state.logout)
   const user =useUserStore(state => state.user)
+  const profileImage = useUserStore(state => state.profileImage)
   const navigate = useNavigate()
 
 
@@ -47,7 +48,7 @@ const MainNav = () => {
                   </Link>
               </div>
 
-              <div className='absolute right-10 flex mx-10 gap-10'>
+              <div className='absolute right-10 flex mx-10 gap-10  justify-center items-center '>
                   <div className='relative'>
                   {Object.keys(cart).length !== 0 
                   ?
@@ -71,15 +72,24 @@ const MainNav = () => {
                       (token) 
                   
                       ?  
-                      <details className="dropdown">
-                        <summary className="btn m-1 h-14 w-14 rounded-full "><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M288 320a224 224 0 1 0 448 0 224 224 0 1 0-448 0zm544 608H160a32 32 0 0 1-32-32v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 0 1-32 32z"></path></g></svg></summary>
-                          <ul className="menu  dropdown-content bg-base-100 rounded-box z-20 w-52 p-2 shadow">
+                      <details className="dropdown dropdown-end">
+                        <summary className=" rounded-full before:content-none"><img src={profileImage} alt="" className=' h-20 w-20 rounded-full shadow-xl' /></summary>
+                        {/* <summary className="btn m-1 h-14 w-14 rounded-full "><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M288 320a224 224 0 1 0 448 0 224 224 0 1 0-448 0zm544 608H160a32 32 0 0 1-32-32v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 0 1-32 32z"></path></g></svg></summary> */}
+                          <ul className="  menu  dropdown-content bg-base-100 rounded-box z-20 w-52 p-2 shadow">
                           {
                             user.role === "ADMIN"
                             ?
                             <li  onClick={() => navigate('/admin')}><a>Admin dashboard</a></li>
                             :
                             <li onClick={() => navigate('/user')}><a>Manage profile</a></li>
+
+                          }
+                          {
+                            user.role === "ADMIN"
+                            ?
+                            <></>
+                            :
+                            <li  onClick={() => navigate('/user/history')}><a>History</a></li>
 
                           }
 
@@ -110,9 +120,9 @@ const MainNav = () => {
             <div className='flex items-center gap-12 justify-center h-14'>
            
             <Link to = {'/'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Home</Link>
-            <Link to = {'shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>Products</Link>
-            <Link to = {'shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>FAQS</Link>
-            <Link to = {'shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Why Us ?</Link>
+            <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>Products</Link>
+            <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>FAQS</Link>
+            <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Why Us ?</Link>
             </div>
         {/* </div> */}
      </div>
