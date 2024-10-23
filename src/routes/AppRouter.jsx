@@ -5,7 +5,6 @@ import Register from "../pages/auth/Register";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/auth/Login";
 import Shop from "../pages/Shop";
-import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Dashboard from '../pages/admin/Dashboard'
 import AdminLayout from "../Layouts/AdminLayout";
@@ -21,6 +20,7 @@ import OrderComplete from "../pages/OrderComplete";
 import Status from '../pages/user/Status'
 import Faq from '../pages/Faq'
 import WhyUs from '../pages/WhyUs'
+import Fitpage from '../pages/Fitpage'
 
 
 
@@ -31,7 +31,6 @@ const router = createBrowserRouter([
   children :[
     { index: true, element: <HomePage /> },
     { path: "shop", element: <Shop /> },
-    { path: "cart", element: <Cart /> },
     { path: "history", element: <History /> },
     { path: "checkout", element: <Checkout /> },
     { path: "complete", element: <OrderComplete /> },
@@ -43,7 +42,7 @@ const router = createBrowserRouter([
   ]
   },
 
-
+  {path: '/fit', element: <Fitpage />},
 
   {path : '/admin',
 
@@ -57,18 +56,13 @@ const router = createBrowserRouter([
 
     ]
   },
+
+  
   {path : '/user',
     element: <UserLayout /> ,
     children: [
     {index: true, element: <HomeUser /> },
     { path: "history", element: <Status /> },
-    // { path: "shop", element: <Shop /> },
-    // { path: "cart", element: <Cart /> },
-    // { path: "history", element: <History /> },
-    // { path: "checkout", element: <Checkout /> },
-    // { path: "register", element: <Register /> },
-    // { path: "login", element: <Login /> },
-    // { path: "complete", element: <OrderComplete /> },
 
     ]
   },

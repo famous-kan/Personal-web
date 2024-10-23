@@ -71,16 +71,18 @@ const FormProduct = () => {
       if(file){
         body.append('image', file)
       }
-      
+
       const result = await axios.post("http://localhost:8000/product", body , {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       getAllProducts(10, page, token)
+      console.log(e.target)
       toast.success(`เพิ่มข้อมูลดอก ${result.data.product.title} สำเร็จ`);
     } catch (err) {
       console.log(err);
+      toast.error("Put all data")
     }
   };
 
@@ -131,7 +133,9 @@ const FormProduct = () => {
         </div>
         <hr />
         <br />
-
+            </form>
+            
+                 
         <div className=" w-full">
         <table className="w-full">
           <thead>
@@ -183,7 +187,6 @@ const FormProduct = () => {
         </table>
         </div>
 
-      </form>
       <div className="flex gap-3">
         <button onClick={() => hdlPageChange(-1)} className="btn">previous</button>
         <button onClick={() => hdlPageChange(+1)} className="btn">next</button>

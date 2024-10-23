@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useOrderStore from '../../stores/orderStore';
 import useUserStore from '../../stores/userStore';
+import { toast } from "react-toastify";
 
 const OrderCustomer = () => {
     const getAllOrder = useOrderStore((state) => state.getAllOrder);
@@ -15,14 +16,15 @@ const OrderCustomer = () => {
     }, [getAllOrder, token]);
 
     const hdlChange = (e, index) => {
-        setCurStatus(prev => ({ ...prev, [index]: e.target.value }));
+        setCurStatus(prev => ({ ...prev, [index]: e.target.value }))
     };
 
     const hdlSubmit = async (e, id,index) => {
         e.preventDefault();
         const res = await changeStatus(id, curStatus[index], token);
         getAllOrder(token);
-        setCurStatus(prev => ({ ...prev, [index]: '' })); // Reset only the submitted status
+        setCurStatus(prev => ({ ...prev, [index]: '' }))
+        toast.success('status updated successfully')
         console.log(curStatus);
     };
 

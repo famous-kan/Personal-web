@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useProductStore from '../stores/productStore'
 import useCartStore from "../stores/cartStore";
 import SearchProduct from "../components/SearchProduct";
+import { toast } from "react-toastify";
 
 const Shop = () => {
   const [page, setPage] = useState(1)
@@ -97,7 +98,13 @@ const Shop = () => {
 
                     <p>{el.title}</p>
                     <p>Price {el.price} Baht</p>
-                    <div onClick={() => addtoCart(el.id)} className="btn w-wide m-2">Add to cart</div>
+                    <div onClick={() => {
+                      addtoCart(el.id)
+                      toast.success('Added product successfully')
+                      
+                    }}  
+                    
+                    className="btn w-wide m-2">Add to cart</div>
               </div>
             );
           })}

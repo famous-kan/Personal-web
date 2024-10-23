@@ -65,7 +65,7 @@ const EditProfileAdmin = () => {
                 newConfirmPassword: '' 
             })
             setUser(result.data.editUser)
-            setprofileImage(result.data.editUser.profileImage)
+            setprofileImage(result.data.editUser.profileImage || "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg")
             setErrMsg({message: '', isError: false})
             toast.success('Update successfully')
         } catch (err) {

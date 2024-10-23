@@ -46,7 +46,7 @@ const EditProduct = (props) => {
                 },
             });
             toast.success('Edit data completely')
-            
+            setInput(initialState)
             getAllProducts(10,1,token)
         } catch (err) {
           console.log(err)
@@ -88,7 +88,7 @@ const EditProduct = (props) => {
           name="image" 
           onChange={(e) => setFile(e.target.files[0])}
           />
-        <button>Submit</button>
+        <button onClick={e=>e.target.closest('dialog').close() }>Submit</button>
         </form>
 
 
