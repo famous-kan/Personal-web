@@ -56,11 +56,11 @@ const HomePage = () => {
     <br />
 
 
-    <div className=" flex flex-col gap-5 bg-slate-900 w-3/4 justify-center mx-auto shadow-2xl">
+    <div className=" flex flex-col gap-5 bg-orange-100 rounded-lg w-2/3 justify-center mx-auto shadow-2xl">
     {/* <video src="/src/assets/purple.mp4" autoPlay loop className=" relative h-[600px] w-full" >
       <div className="absolute "> */}
-      <p className=" text-3xl mx-auto my-4 text-white z-10">Treading Flowers</p>
-      <div className="flex overflow-x-auto overflow-y-hidden space-x-8  w-3/4 bg-slate-900 p-2 rounded-2xl mx-auto">
+      <em className=" text-3xl mx-auto my-4 z-10">Treading Flowers</em>
+      <div className="flex overflow-x-auto overflow-y-hidden space-x-8  w-3/4 bg-stone-500 p-2 rounded-2xl mx-auto">
        
         <div className="relative flex-shrink-0 rounded-full ">
           <img className="  w-[270px] rounded-xl" src="https://www.urbanflowers.co.th/wp-content/uploads/2024/01/A-single-013.jpg" alt="" />

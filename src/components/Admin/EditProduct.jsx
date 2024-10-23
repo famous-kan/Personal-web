@@ -45,7 +45,8 @@ const EditProduct = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            toast.success('EIEI')
+            toast.success('Edit data completely')
+            
             getAllProducts(10,1,token)
         } catch (err) {
           console.log(err)

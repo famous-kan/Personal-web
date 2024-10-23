@@ -11,6 +11,7 @@ const Checkout = () => {
   const productOncart = useCartStore(state => state.productOncart)
   const cart = useCartStore(state => state.cart)
   const updateProductOnCart = useCartStore(state => state.updateProductOnCart)
+  const deleteProductOnCart = useCartStore(state => state.deleteProductOnCart)
   const createOrder = useCheckoutStore(state => state.createOrder)
   const cartDetail = useCheckoutStore(state => state.cartDetail)
   const hdlChange = useCheckoutStore(state => state.hdlChange)
@@ -22,7 +23,7 @@ const Checkout = () => {
   const setFile = useCheckoutStore(state => state.setFile)
   const [visible, setvisible] = useState(false)
   const tranType = useCheckoutStore(state => state.tranType)
-  // const [showImage,setShowImage] = useState
+
   // const getOrder = useOrderStore(state => state.getOrder)
   // const token = useUserStore(state => state.token)
 
@@ -157,7 +158,7 @@ const Checkout = () => {
                         <button className="border w-8 btn btn-sm " onClick={()=> updateProductOnCart(-1,item.id)} >-</button>
                         <span className=" w-8 text-center text-sm ">{cart[item.id]}</span>
                         <button className="border w-8 btn btn-sm  "  onClick={()=> updateProductOnCart(+1,item.id)}>+</button>
-                        <button> <MdOutlineDelete className='w-8 h-8 mx-3 opacity-70'/></button>
+                        <button onClick={() => deleteProductOnCart(item.id)} > <MdOutlineDelete className='w-8 h-8 mx-3 opacity-70'/></button>
                         </div>
                     </div>
                     </div>
@@ -187,7 +188,7 @@ const Checkout = () => {
               <ul className=' flex flex-col gap-3'>
 
                    <li className=" w-[90px] ">
-                    <div className="bg-sky-100 flex rounded-xl items-center">
+                    <div className=" flex rounded-xl items-center">
                     <div className='flex gap-1 items-center mx-1'>
                         <input 
                         type="radio" 
@@ -202,7 +203,7 @@ const Checkout = () => {
                     </div>
                   </li>
                    <li className=" w-[180px] ">
-                      <div className="bg-sky-100 flex flex-col gap-4 rounded-xl items-start p-1">
+                      <div className=" flex flex-col gap-4 rounded-xl items-start p-1">
                         <div className='flex gap-1 items-center'>
                         <input 
                         id="list-qr-code" 
@@ -217,9 +218,9 @@ const Checkout = () => {
                         </div>
                         { visible && 
 
-                            <div className=' flex bg-sky-100'>
+                            <div className=' flex '>
 
-                                  <div className='flex flex-col gap-4 bg-sky-100 mx-4'>
+                                  <div className='flex flex-col gap-4  mx-4'>
                                   <div className='flex flex-col font-semibold min-w-[200px]'>
                                   <img src="https://i.pinimg.com/474x/00/24/29/002429e4b28532ce5273cafa10be61c2.jpg" className='w-[25px]' alt="" />
                                   <p>KBANK Kasikorn Bank Company </p>
@@ -256,7 +257,7 @@ const Checkout = () => {
               </div>
                 
                 <div>
-                  <p></p>
+                  <p>Upload transaction slip:</p>
                         <input
                     type="file"
                     id="myFile"

@@ -19,10 +19,8 @@ export default function Login() {
 
   const hdlChange = async e =>{
     setInput(prev => ({...prev,[e.target.name]: e.target.value}))
-    console.log(checkInput)
-    console.log(input)
-}
 
+}
 
   const roleRedirect = (role) => {
     if(role === 'ADMIN'){
@@ -35,41 +33,27 @@ export default function Login() {
   const hdlSubmit = async(e) => {
     try {
       e.preventDefault()
+      let isAllSubmit = {}
+      Object.entries(input).forEach(([key,value]) => {
+        isAllSubmit[key] = !!value.trim()
+      });
+      setCheckinput(isAllSubmit)
+      
       let res = await login(input)
       const role = res.user.role
-
-      const identityValid = !!input.identity.trim();
-      const passwordValid = !!input.password.trim();
-      setCheckInput({
-        identity: identityValid,
-        password: passwordValid
-      });
-      console.log(checkInput,'---------------')
-      console.log('+++++++++++++++++++++++++++++++++++++++++++++')
-
       if(!(input.identity.trim() && input.password.trim())){
         return alert("Please fill in all input")
       }
-      
+      setCheckinput(isAllSubmit)
       roleRedirect(role)
   
     } catch (err) {
       console.log(err)
       const errMsg = err.response?.data?.message || err.message
-            console.log(errMsg)
+          console.log(errMsg)
           toast.error(errMsg)
     }
   }
-
-  // const roleRedirect = (role) => {
-  //   console.log(role)
-  //   if(role === 'ADMIN'){
-  //     navigate('/admin')
-  //   }else{
-  //     navigate('/user')
-  //   }
-  // }
-
 
   return (
 
@@ -90,7 +74,7 @@ export default function Login() {
             value = {input.identity}
             onChange={hdlChange} type="text" placeholder='Phone or email' 
             className="input input-bordered w-[300px] bg-red-100 " />
-             {!checkInput.identity ? <></>  : <p className='text-xs text-red-500'>Fill your Phone or Email!</p>}
+             {checkInput.identity ? <></>  : <p className='text-xs text-red-500'>Fill your Phone or Email!</p>}
 
 
             <input
@@ -99,7 +83,7 @@ export default function Login() {
             value = {input.password}
             onChange={hdlChange} type="password" placeholder='password' 
             className="input input-bordered w-[300px] bg-red-100 " />
-            {!checkInput.password ? <></>  : <p className='text-xs text-red-500'>Fill your Password!</p>}
+            {checkInput.password ? <></>  : <p className='text-xs text-red-500'>Fill your Password!</p>}
 
 
             <button className='btn hover:bg-rose-400 hover:text-white text-lg w-[300px]  text-center my-3' >Submit</button>

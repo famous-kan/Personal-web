@@ -6,7 +6,6 @@ import HomePage from "../pages/HomePage";
 import Login from "../pages/auth/Login";
 import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
-import History from "../pages/History";
 import Checkout from "../pages/Checkout";
 import Dashboard from '../pages/admin/Dashboard'
 import AdminLayout from "../Layouts/AdminLayout";
@@ -14,11 +13,16 @@ import Product from "../pages/admin/Product";
 import Manage from "../pages/admin/Manage";
 import OrderCustomer from "../pages/admin/OrderCustomer";
 import HomeUser from "../pages/user/HomeUser";
+import History from "../pages/user/History";
 import UserLayout from "../Layouts/UserLayout";
 import ProtectRouter from "./ProtectRouter";
 import Unauthorization from "../pages/Unauthorization";
 import OrderComplete from "../pages/OrderComplete";
 import Status from '../pages/user/Status'
+import Faq from '../pages/Faq'
+import WhyUs from '../pages/WhyUs'
+
+
 
 const router = createBrowserRouter([
 
@@ -33,9 +37,12 @@ const router = createBrowserRouter([
     { path: "complete", element: <OrderComplete /> },
     { path: "register", element: <Register /> },
     { path: "login", element: <Login /> },
+    { path: "faq", element:  <Faq /> },
+    { path: "WhyUs", element:  <WhyUs /> },
     {path: "unauthorization", element: <Unauthorization /> },
   ]
   },
+
 
 
   {path : '/admin',

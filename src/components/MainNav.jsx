@@ -110,19 +110,12 @@ const MainNav = () => {
 
         </div>
 
-        {/* <button type='button' className='btn btn-secondary text-lg text-white w-fit mx-auto' 
-                 onClick={() => document.getElementById('register-modal').showModal()}
-                 >Create new account</button> */}
-
-
-        {/* <div className='flex justify-between h-12'> */}
-
             <div className='flex items-center gap-12 justify-center h-14'>
            
             <Link to = {'/'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Home</Link>
             <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>Products</Link>
-            <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>FAQS</Link>
-            <Link to = {'/shop'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Why Us ?</Link>
+            <Link to = {'/faq'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white'>FAQS</Link>
+            <Link to = {'/WhyUs'} className='w-40 h-full items-center transition justify-center flex ease-in-out delay-75 hover:bg-gray-700 hover:text-white' >Why Us ?</Link>
             </div>
         {/* </div> */}
      </div>
@@ -135,7 +128,6 @@ const MainNav = () => {
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
           onClick={e=>e.target.closest('dialog').close()}
           >✕</button>
-          {/* <Register /> */}
           <AddtoCart /> 
           
       </div>

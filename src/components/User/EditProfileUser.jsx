@@ -78,50 +78,50 @@ const EditProfileUser = () => {
   return (
     <div>
 
- 
-    <span>Update profile</span>
-    <form className= 'm-5 gap-2 flex flex-col w-3/5' onSubmit={hdlSubmit}>
-       <input type="text" placeholder='Email or Phone' className='input input-bordered '
-          name='newIdentity'
-          value={input.newIdentity}
-          onChange={hdlChange} />
-       <input type="text" placeholder='First name' className='input input-bordered '
-             name='newFirst'
-             value={input.newFirst}
-             onChange={hdlChange} />
-       <input type="text" placeholder='Last name' className='input input-bordered '
-             name='newLast'
-             value={input.newLast}
-             onChange={hdlChange} />
-       <input type="password" placeholder='password' className='input input-bordered '
-             name='newPassword'
-             value={input.newPassword}
-             onChange={hdlChange} />
-       <input type="password" placeholder='confirm password' className='input input-bordered '
-             name='newConfirmPassword'
-             value={input.newConfirmPassword}
-             onChange={hdlChange} />
-        
-        Image :
-        <input
-          type="file"
-          id="myFile"
-          name="image"
-          onChange={(e) => setFile(e.target.files[0])}
-        ></input>
+        <div className='flex flex-col justify-center items-center bg-teal-100 m-2 rounded-md'>
+            <em className='text-3xl my-2'>Update profile</em>
+            <form className= 'm-1 gap-3 flex flex-col w-3/5' onSubmit={hdlSubmit}>
+                <input type="text" placeholder='Email or Phone' className='input input-bordered '
+                    name='newIdentity'
+                    value={input.newIdentity}
+                    onChange={hdlChange} />
+                <input type="text" placeholder='First name' className='input input-bordered '
+                        name='newFirst'
+                        value={input.newFirst}
+                        onChange={hdlChange} />
+                <input type="text" placeholder='Last name' className='input input-bordered '
+                        name='newLast'
+                        value={input.newLast}
+                        onChange={hdlChange} />
+                <input type="password" placeholder='password' className='input input-bordered '
+                        name='newPassword'
+                        value={input.newPassword}
+                        onChange={hdlChange} />
+                <input type="password" placeholder='confirm password' className='input input-bordered '
+                        name='newConfirmPassword'
+                        value={input.newConfirmPassword}
+                        onChange={hdlChange} />
+                    
+                    Image :
+                    <input
+                    type="file"
+                    id="myFile"
+                    name="image"
+                    className='file-input file-input-bordered w-full max-w-xs'
+                    onChange={(e) => setFile(e.target.files[0])}
+                    ></input>
 
-        { 
-                errMsg.isError ? 
-                <p>{errMsg.message}</p>
-                
-                : <></>
+                    { 
+                            errMsg.isError ? 
+                            <p>{errMsg.message}</p>
+                            
+                            : <></>
 
-        }
-        <button className=' mx-3 btn btn-secondary'>Update</button>
+                    }
+                    <button className=' m-2 btn text-xl '>Update</button>
 
-
-    </form>
-
+            </form>
+        </div>
     </div>
   )
 }

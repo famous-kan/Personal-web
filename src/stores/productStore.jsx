@@ -6,7 +6,7 @@ const useProductStore = create((set,get) => ({
     products: [],
     loading : false,
 
-    getAllProducts : async(count = 10,page =1,token) => {
+    getAllProducts : async(count = 9,page =1,token) => {
         set({loading: true})
         const result = await axios.get(`http://localhost:8000/product/${count}/${page}`, {
             headers : {Authorization : `Bearer ${token}`}

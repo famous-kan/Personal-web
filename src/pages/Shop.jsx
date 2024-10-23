@@ -12,6 +12,7 @@ const Shop = () => {
 
   useEffect(() => {
     getAllProducts(9,page);
+    console.log(products)
   }, []);
 
   const hdlPageChange = (n) => {

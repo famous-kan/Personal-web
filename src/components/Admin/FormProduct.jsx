@@ -4,6 +4,7 @@ import useProductStore from "../../stores/productStore";
 import axios from "axios";
 import { toast } from "react-toastify";
 import EditProduct from "./EditProduct";
+import { MdDelete } from "react-icons/md";
 
 const initialState = {
   title: "",
@@ -126,7 +127,7 @@ const FormProduct = () => {
           onChange={(e) => setFile(e.target.files[0])}
         ></input>
         <br />
-        <button className="btn btn-primary text-xl my-2">Update</button>
+        <button className="btn btn-primary text-xl my-2">Add</button>
         </div>
         <hr />
         <br />
@@ -140,8 +141,8 @@ const FormProduct = () => {
               <th className="w-[200px] text-center" scope="col">Title</th>
               <th className="w-[400px] text-center" scope="col">Description</th>
               <th className="w-[80px] text-center" scope="col">Price</th>
-              <th className="w-[100px] text-center" scope="col">Action</th>
-              <th className="w-[100px] text-center" scope="col">Action</th>
+              <th className="w-[100px] text-center" scope="col">Edit</th>
+              <th className="w-[100px] text-center" scope="col">Delete</th>
               
             </tr>
           </thead>
@@ -160,11 +161,11 @@ const FormProduct = () => {
                   </td>
                   <td className="text-center text-xl">{el.title}</td>
                   <td className="">{el.description}</td>
-                  <td className="text-center font-bold border-r">{el.price}</td>
+                  <td className="text-center font-bold ">{el.price}</td>
 
-                  <td> 
+                  <td className=" "> 
                     
-            <button type='button' className='btn btn-outline'
+            <button type='button' className='btn btn-outline w-[60px] mx-4 '
              onClick={() => {
              setEditProduct(el.id)
              document.getElementById('edit-modal').showModal()
@@ -172,7 +173,7 @@ const FormProduct = () => {
                  >Edit</button>
             </td>
                   <td> 
-            <button className="btn  text-white btn-secondary" onClick={() => hdlRemoveProduct(el.id) }> Delete </button>
+            <button className="btn  text-white bg-red-500  w-[70px] mx-4" onClick={() => hdlRemoveProduct(el.id) }><MdDelete className="w-[30px] h-[30px]" /></button>
             </td>
                 </tr>
                 

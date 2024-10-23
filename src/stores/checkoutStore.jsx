@@ -8,8 +8,6 @@ import { toast } from 'react-toastify'
 
 
 const useCheckoutStore = create((set, get) => ({
-    
-
 
     tranType : "",
 
@@ -126,13 +124,14 @@ const useCheckoutStore = create((set, get) => ({
                 set(state => ({
                     checkInput : {...state.checkInput , [cur[0]] : !!cur[1].trim()}
                 }))
-                // checkInput[cur[0]] = !!cur[1].trim()
+                checkInput[cur[0]] = !!cur[1].trim()
                 return prv && cur[1].trim()
             },true)
             set(state => ({
                 checkInput : {...state.checkInput , paymentMedthod : !!tranType}
             }))
             // checkInput.paymentMedthod = !!tranType
+
             console.log(checkInput)
             if (!tranType || !isAllSubmit){
                 return
@@ -144,6 +143,7 @@ const useCheckoutStore = create((set, get) => ({
                 } 
              }
             const res = await createOrder(token)
+            useCartStore.setState({ cart: {} });
             set({ input: 
                 {
                     firstName : '',
