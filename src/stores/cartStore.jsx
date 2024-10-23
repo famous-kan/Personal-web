@@ -8,7 +8,6 @@ import {createJSONStorage, persist} from 'zustand/middleware'
 const useCartStore = create (persist((set,get) => ({
     cart : {},
     setCart : (newVal) => set(prv => ({cart : newVal})),
-    // addArr: (newVal) => set((prv) => ({ arr: [...prv.arr, newVal] })),
     productOncart : [],
     addtoCart: (productId) => {
         const cart = get().cart;

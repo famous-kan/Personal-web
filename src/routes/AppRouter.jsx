@@ -20,7 +20,7 @@ import OrderComplete from "../pages/OrderComplete";
 import Status from '../pages/user/Status'
 import Faq from '../pages/Faq'
 import WhyUs from '../pages/WhyUs'
-import Fitpage from '../pages/Fitpage'
+
 
 
 
@@ -41,8 +41,6 @@ const router = createBrowserRouter([
     {path: "unauthorization", element: <Unauthorization /> },
   ]
   },
-
-  {path: '/fit', element: <Fitpage />},
 
   {path : '/admin',
 
