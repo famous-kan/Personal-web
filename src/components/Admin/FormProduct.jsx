@@ -24,6 +24,8 @@ const FormProduct = () => {
   useEffect(() => {
     getAllProducts(10,page, token);
   }, []);
+
+  const URL = import.meta.env.VITE_API_URL
   const hdlChange = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -45,7 +47,7 @@ const FormProduct = () => {
 
   const hdlRemoveProduct = async(id)=>{
     try {
-      const result = await axios.delete(`http://localhost:8000/product/${id}` , {
+      const result = await axios.delete(`${URL}/product/${id}` , {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,6 +61,7 @@ const FormProduct = () => {
   }
 
   const hdlSubmit = async (e) => {
+    const URL = import.meta.env.VITE_API_URL
     e.preventDefault();
     try {
       const body = new FormData()
@@ -69,7 +72,7 @@ const FormProduct = () => {
         body.append('image', file)
       }
 
-      const result = await axios.post("http://localhost:8000/product", body , {
+      const result = await axios.post(`${URL}/product`, body , {
         headers: {
           Authorization: `Bearer ${token}`,
         },

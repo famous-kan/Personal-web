@@ -11,8 +11,10 @@ const ProtectRouter = ({element, allow}) => {
   useEffect(() => {
     checkRole()
   })
+
+  const URL = import.meta.env.VITE_API_URL
   
-  const currentUser = (token) => axios.post('http://localhost:8000/auth/current-user',{},{
+  const currentUser = (token) => axios.post(`${URL}/auth/current-user`,{},{
     headers:{
         Authorization: `Bearer ${token}`
     }

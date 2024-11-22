@@ -6,6 +6,7 @@ import {createJSONStorage, persist} from 'zustand/middleware'
 
 
 const useCartStore = create (persist((set,get) => ({
+    URL : import.meta.env.VITE_API_URL,
     cart : {},
     setCart : (newVal) => set(prv => ({cart : newVal})),
     productOncart : [],
@@ -18,10 +19,11 @@ const useCartStore = create (persist((set,get) => ({
         }));
     },
     getProductOnCart: async() => {
+        const {URL} = get()
         const array = Object.keys(get().cart)
         const body = {productId : array}
         console.log(body)
-        const result = await axios.post(`http://localhost:8000/cart/id`, body)
+        const result = await axios.post(`${URL}/cart/id`, body)
         console.log(result)
         set({productOncart : result.data})
         

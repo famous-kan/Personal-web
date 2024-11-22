@@ -12,7 +12,7 @@ const initialState = {
   };
 
 const EditProduct = (props) => {
-    
+    const URL = import.meta.env.VITE_API_URL
     const [file, setFile] = useState(null)
     const [input, setInput] = useState(initialState);
     const token = useUserStore(state => state.token)
@@ -39,8 +39,7 @@ const EditProduct = (props) => {
             if(file){
                 body.append('image', file)
             }
-            // console.log(`http://localhost:8000/product/${id}`)
-            const result = await axios.patch(`http://localhost:8000/product/${id}`, body , {
+            const result = await axios.patch(`${URL}/product/${id}`, body , {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

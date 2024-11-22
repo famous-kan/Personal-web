@@ -41,11 +41,13 @@ const useCheckoutStore = create((set, get) => ({
 
     file: null,
     setFile : (image) => set({file : image}),
+    URL : import.meta.env.VITE_API_URL,
 
     createOrder: async (token) => {
         let user = useUserStore.getState().user
         let productOncart = useCartStore.getState().productOncart
         let cart = useCartStore.getState().cart
+        const {URL} = get()
 
         const { tranType,file, cartDetail ,input } = get();
         const havefile = !!file
@@ -75,7 +77,7 @@ const useCheckoutStore = create((set, get) => ({
         console.log(body)
 
         try {
-            const res = await axios.post("http://localhost:8000/order", body , {
+            const res = await axios.post(`${URL}/order`, body , {
                 headers : {Authorization : `Bearer ${token}`}
             })
             const orderId = res.data.id
@@ -91,7 +93,7 @@ const useCheckoutStore = create((set, get) => ({
             }
             const cartBody = {shoppingCart : arrObj,orderId:orderId}
             console.log(cartBody)
-            const resProductOnCart = await axios.post('http://localhost:8000/order/product',cartBody)
+            const resProductOnCart = await axios.post(`${URL}/order/product`,cartBody)
             console.log(resProductOnCart)
             set({ cart: {}, productOncart: [] }); 
 

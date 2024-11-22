@@ -23,6 +23,8 @@ const EditProfileUser = () => {
         setprofileImage(profileImage)
     },[user,profileImage])
 
+    const URL = import.meta.env.VITE_API_URL
+
     const [errMsg, setErrMsg] = useState({
         isError : false,
         message : ''
@@ -49,7 +51,7 @@ const EditProfileUser = () => {
             if(input.newPassword !== input.newConfirmPassword){
                 return toast.error('Password is not matched')
             }
-            const result = await axios.patch('http://localhost:8000/user', body , {
+            const result = await axios.patch(`${URL}/user`, body , {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },

@@ -38,6 +38,7 @@ const EditProfileAdmin = () => {
 
 
     const hdlSubmit = async(e) => {
+        const URL = import.meta.env.VITE_API_URL
         try {
             e.preventDefault()
 
@@ -52,7 +53,7 @@ const EditProfileAdmin = () => {
             if(input.newPassword !== input.newConfirmPassword){
                 return toast.error('Password is not matched')
             }
-            const result = await axios.patch('http://localhost:8000/user', body , {
+            const result = await axios.patch(`${URL}/user`, body , {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },

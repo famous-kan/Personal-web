@@ -7,16 +7,19 @@ const useOrderStore = create((set, get) => ({
     orders : [],
     allorders: [],
     curStatus : {},
+    URL : import.meta.env.VITE_API_URL,
 
     getOrder : async(token) => {
-        const result = await axios.get('http://localhost:8000/order', {
+        const {URL} = get()
+        const result = await axios.get(`${URL}/order`, {
             headers : {Authorization : `Bearer ${token}`}
         })
         console.log(result)
         set({ orders: result.data })
     },
     getAllOrder : async(token) => {
-        const result = await axios.get('http://localhost:8000/order/all', {
+        const {URL} = get()
+        const result = await axios.get(`${URL}/order/all`, {
             headers : {Authorization : `Bearer ${token}`}
         })
         console.log(result)
@@ -31,7 +34,8 @@ const useOrderStore = create((set, get) => ({
         console.log(curStatus)
     },
     changeStatus : async(id,status,token) => {
-        const result = await axios.patch('http://localhost:8000/order/all', {id: id, status: status}, {
+        const {URL} = get()
+        const result = await axios.patch(`${URL}/order/all`, {id: id, status: status}, {
             headers : {Authorization : `Bearer ${token}`}
         })
         console.log(result)

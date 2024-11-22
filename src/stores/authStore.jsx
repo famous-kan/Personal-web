@@ -4,10 +4,12 @@ import { create } from "zustand";
 
 const useAuthStore = create((set,get) => ({
     member : [],
+    URL : import.meta.env.VITE_API_URL,
     editUserdata : async() => {
+        const {URL} = get()
         try {
             let {setUser} = useUserStore.getState()
-            const editResult = await axios.patch(`http://localhost:8000/user/${id}`, body , {
+            const editResult = await axios.patch(`${URL}/user/${id}`, body , {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -19,7 +21,8 @@ const useAuthStore = create((set,get) => ({
         }
     },
     getAlluser : async(token) => {
-        const result = await axios.get('http://localhost:8000/user/member', {
+        const {URL} = get()
+        const result = await axios.get(`${URL}/user/member`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -29,7 +32,8 @@ const useAuthStore = create((set,get) => ({
     },
 
     updateRole : async(id,role,token) => {
-        const result = await axios.patch(`http://localhost:8000/user/member/${id}`,{role}, {
+        const {URL} = get()
+        const result = await axios.patch(`${URL}/user/member/${id}`,{role}, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -37,8 +41,9 @@ const useAuthStore = create((set,get) => ({
         // console.log(result)
     },
     deleteUser : async(id,token) => {
+        const {URL} = get()
         const {getAlluser} = get()
-        const result = await axios.delete(`http://localhost:8000/user/member/${id}`, {
+        const result = await axios.delete(`${URL}/user/member/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

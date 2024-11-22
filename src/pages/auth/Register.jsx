@@ -35,6 +35,7 @@ export default function Register() {
 
 
     const hdlSubmit = async(e) => {
+        const URL = import.meta.env.VITE_API_URL
         try {
             e.preventDefault()
             let isAllSubmit = {}
@@ -57,7 +58,7 @@ export default function Register() {
             }
 
 
-            const result = await axios.post('http://localhost:8000/auth/register', input)
+            const result = await axios.post(`${URL}/auth/register`, input)
             SetInput({
                 identity : '',
                 firstName : '',
