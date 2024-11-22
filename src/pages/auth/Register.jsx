@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify'
 
 export default function Register() {
-
+    const navigate = useNavigate()
     const [input,SetInput] = useState({
         identity : '',
         firstName : '',
@@ -12,6 +13,15 @@ export default function Register() {
         password : '',
         confirmPassword: '' 
     })
+
+    const [checkInput, setCheckinput] = useState({
+        identity : true,
+        firstName : true,
+        lastName : true,
+        password: true,
+        confirmPassword: true,
+      })
+    
     
     const [errMsg, setErrMsg] = useState({
         isError : false,
@@ -27,6 +37,11 @@ export default function Register() {
     const hdlSubmit = async(e) => {
         try {
             e.preventDefault()
+            let isAllSubmit = {}
+            Object.entries(input).forEach(([key,value]) => {
+              isAllSubmit[key] = !!value.trim()
+            });
+            setCheckinput(isAllSubmit)
 
             if(!(input.identity.trim() &&
             input.firstName.trim() &&
@@ -53,7 +68,9 @@ export default function Register() {
             console.log(result)
             e.target.closest('dialog').close()
             setErrMsg({message: '', isError: false})
+            setCheckinput(isAllSubmit)
             toast.success('Register successfully')
+            navigate('/')
 
         } catch (err) {
             console.log(err)
@@ -74,22 +91,30 @@ export default function Register() {
                 name='identity'
                 value={input.identity}
                 onChange={hdlChange} />
+                {checkInput.identity 
+                ? <></>  
+                : <p className='text-xs text-red-500'>Fill your Phone or Email!</p>
+                }
             <input type="text" placeholder='First name' className='input input-bordered '
                     name='firstName'
                     value={input.firstName}
                     onChange={hdlChange} />
+                {checkInput.firstName ? <></>  : <p className='text-xs text-red-500'>Fill your Firstname!</p>}
             <input type="text" placeholder='Last name' className='input input-bordered '
                     name='lastName'
                     value={input.lastName}
                     onChange={hdlChange} />
+                {checkInput.lastName ? <></>  : <p className='text-xs text-red-500'>Fill your Lastname!</p>}
             <input type="password" placeholder='password' className='input input-bordered '
                     name='password'
                     value={input.password}
                     onChange={hdlChange} />
+                     {checkInput.password ? <></>  : <p className='text-xs text-red-500'>Fill your Password!</p>}
             <input type="password" placeholder='confirm password' className='input input-bordered '
                     name='confirmPassword'
                     value={input.confirmPassword}
                     onChange={hdlChange} />
+                    {checkInput.confirmPassword ? <></> : <p className='text-xs text-red-500'>Fill your Confirm password!</p>}
                 { 
                         errMsg.isError ? 
                         <p>{errMsg.message}</p>

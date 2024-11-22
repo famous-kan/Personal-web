@@ -27,7 +27,7 @@ const Manage = () => {
 
   const hdlRemoveUser = async(id) => {
     const remove = await deleteUser(id,token)
-    // await getAlluser(token)
+    await getAlluser(token)
     toast.success("Delete successfully")
   }
 

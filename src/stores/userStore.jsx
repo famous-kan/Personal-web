@@ -2,7 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import useCartStore from "./cartStore";
-import { RiUserFill } from "react-icons/ri";
+
 
 
 
@@ -15,7 +15,8 @@ const useUserStore = create(persist((set,get) => ({
 
 
     login: async(input) => {
-        const rs = await axios.post('http://localhost:8000/auth/login', input)
+        const URL = import.meta.env.VITE_API_URL
+        const rs = await axios.post(`${URL}/auth/login`, input)
         console.log(rs)
         if(!rs.data.user.profileImage){
             set({profileImage: "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"})

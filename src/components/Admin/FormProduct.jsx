@@ -58,9 +58,6 @@ const FormProduct = () => {
     }
   }
 
-
-  
-
   const hdlSubmit = async (e) => {
     e.preventDefault();
     try {

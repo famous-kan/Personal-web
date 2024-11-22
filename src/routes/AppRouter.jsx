@@ -20,7 +20,7 @@ import OrderComplete from "../pages/OrderComplete";
 import Status from '../pages/user/Status'
 import Faq from '../pages/Faq'
 import WhyUs from '../pages/WhyUs'
-
+import Homeee from "../pages/Homeee";
 
 
 
@@ -39,6 +39,8 @@ const router = createBrowserRouter([
     { path: "faq", element:  <Faq /> },
     { path: "WhyUs", element:  <WhyUs /> },
     {path: "unauthorization", element: <Unauthorization /> },
+    {path: "homeee", element: <Homeee /> },
+
   ]
   },
 

@@ -39,7 +39,7 @@ const EditProduct = (props) => {
             if(file){
                 body.append('image', file)
             }
-            console.log(`http://localhost:8000/product/${id}`)
+            // console.log(`http://localhost:8000/product/${id}`)
             const result = await axios.patch(`http://localhost:8000/product/${id}`, body , {
                 headers: {
                     Authorization: `Bearer ${token}`,
