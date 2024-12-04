@@ -6,7 +6,7 @@ import AddtoCart from './AddtoCart';
 import useCartStore from '../stores/cartStore';
 import useUserStore from '../stores/userStore';
 import { useNavigate } from "react-router-dom"
-
+import whiteFameEditedtrim from '../assets/whiteFameEditedtrim.png'
 
 const MainNav = () => {
   const getProductOnCart = useCartStore(state => state.getProductOnCart)
@@ -42,7 +42,7 @@ const MainNav = () => {
         <div className='relative bg-slate-900 h-[110px] flex items-center justify-center '>
               <div className='flex justify-center mx-auto'>
                   <Link to = {'/'}>
-                  <img src="/src/assets/whiteFameEditedtrim.png" 
+                  <img src={whiteFameEditedtrim}
                   className='h-[90px] w-[320px] '
                   />
                   </Link>
