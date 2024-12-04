@@ -56,11 +56,6 @@ const HomeUser = () => {
         </div>
     </dialog>
 
-
-      <div>
-        {/* <img src="/src/assets/sunflower.png" alt="" className='h-30 w-30'/> */}
-      </div>
-
       </div>
     </div>
 

@@ -3,8 +3,7 @@ import useCartStore from '../stores/cartStore'
 import { MdOutlineDelete } from "react-icons/md";
 import useCheckoutStore from "../stores/checkoutStore"
 import { useNavigate } from "react-router-dom"
-import useOrderStore from '../stores/orderStore';
-import useUserStore from '../stores/userStore';
+import qr from '../assets/qr.jpg'
 
 
 const Checkout = () => {
@@ -241,7 +240,7 @@ const Checkout = () => {
                               <div className="divider divider-horizontal">OR</div>
    
                                   <div className='flex w-[300px] flex-col'>
-                                  <img src="/src/assets/qr.jpg" className=' h-[300px] m-2' alt="" />
+                                  <img src={qr} className=' h-[300px] m-2' alt="qrCode" />
                                   
                                   </div>
             

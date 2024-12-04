@@ -5,6 +5,9 @@ import { GrCamera } from "react-icons/gr";
 import { FaRegFaceGrinStars } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import CarouselFadeExample from "../components/Carousel";
+// import whiteFameEditedtrim from '../assets/whiteFameEditedtrim.png'
+// import whiteFameEditedtrim from '../assets/whiteFameEditedtrim.png'
+
 const HomePage = () => {
   const [page, setPage] = useState(1)
   const getAllProducts = useProductStore(state => state.getAllProducts)
@@ -57,8 +60,6 @@ const HomePage = () => {
 
 
     <div className=" flex flex-col gap-5 bg-orange-100 rounded-lg w-2/3 justify-center mx-auto shadow-2xl">
-    {/* <video src="/src/assets/purple.mp4" autoPlay loop className=" relative h-[600px] w-full" >
-      <div className="absolute "> */}
       <em className=" text-3xl mx-auto my-4 z-10">Treading Flowers</em>
       <div className="flex overflow-x-auto overflow-y-hidden space-x-8  w-3/4 bg-stone-500 p-2 rounded-2xl mx-auto">
        
@@ -92,8 +93,6 @@ const HomePage = () => {
         
       </div>
       <br />
-      {/* </div>
-    </video> */}
     </div>
     <Link to = {'shop'} className="my-4 flex btn btn-wide mx-auto bg-slate-700 text-white h-16 rounded-2xl text-lg " >See All Products</Link>
 
@@ -110,46 +109,6 @@ const HomePage = () => {
         <Link to = {'login'} className="btn w-20 mx-10">Click !</Link>
       </div>
     </div>
-
-    <div className=" bg-slate-500 h-[130px] flex justify-around items-center ">
-      <div className="flex flex-col">
-        <img src="/src/assets/whiteFameEditedtrim.png" 
-        className='h-[40px] w-[140px] '
-        />
-        <p className="font-bold">Contact Fame Fleur via :</p>
-        <p>Line: @FameFameFleur</p> 
-        <p> Facebook : Fame Fleur Flower </p>
-      </div>
-      <div className="flex gap-2">
-          <p className="">We Accept : </p>
-          <div className="flex flex-col gap-1">
-              <img
-                src="/src/assets/thai_qr_payment.png"
-                alt="GFG Logo"
-                className=" w-full h-8"
-              />
-              <img
-                src="/src/assets/krungthai-logo.jpg"
-                alt="GFG Logo"
-                className=" w-full h-8 "
-              />
-          </div>
-          <div className="flex flex-col gap-1">
-              <img
-                src="https://isranews.org/article/images/2022/Fei/1/logo_thaiscb.jpeg"
-                alt="GFG Logo"
-                className=" w-full h-8 "
-              />
-              <img
-                src="https://www.รถยกรถลาก6ล้อ10ล้อ.com/wp-content/uploads/2020/02/WFLExP4a6A.jpg"
-                alt="GFG Logo"
-                className=" w-full h-8 "
-              />
-          </div>
-
-      </div>
-    </div>
-
     </div>
   )
 }
